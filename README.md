@@ -1,40 +1,147 @@
-# **ACA – SISTEMA DE GESTIÓN DE BASE DE DATOS PARA TIENDA DE DISPOSITIVOS ELECTRÓNICOS**
+🧩 Proyecto de Integración Tecnológica
 
-**Repositorio del Proyecto:**  
-[https://github.com/JohannStudent/ACA_Tienda_Electronicos_DBMS.git](https://github.com/JohannStudent/ACA_Tienda_Electronicos_DBMS.git)
+Este proyecto fue desarrollado como parte de las actividades académicas de la Corporación Unificada Nacional de Educación Superior (CUN) en el programa de Ingeniería de Sistemas, y forma parte del portafolio profesional de Johann Casallas, desarrollador de integración en el Banco Popular.
 
----
+Su propósito es demostrar la aplicación práctica de conceptos de integración de sistemas, arquitectura de software y buenas prácticas de desarrollo en entornos empresariales reales.
 
-### **Corporación Unificada Nacional de Educación Superior (CUN)**  
-**Programa:** Ingeniería de Sistemas  
-**Asignatura:** Gestión de Bases de Datos  
-**Proyecto Final – ACA: Análisis, Diseño e Implementación de un Sistema de Gestión de Datos Relacional**  
-**Estudiante:** Johann Casallas Becerra  
-**Ciudad:** Bogotá D.C., Colombia  
-**Año:** 2025  
+🚀 Características Principales
 
----
+Desarrollo de servicios de integración mediante APIs REST y SOAP.
 
-## **1. Introducción al Problema**
+Comunicación con sistemas internos a través de IBM MQ.
 
-En la actualidad, la gestión de la información representa uno de los pilares fundamentales para la eficiencia operativa y la toma de decisiones en las empresas. Las organizaciones que no cuentan con sistemas estructurados para almacenar, procesar y analizar datos enfrentan dificultades en el control de inventarios, seguimiento de clientes, procesamiento de ventas y evaluación del desempeño comercial.
+Implementación en C# / .NET con soporte para Oracle y SQL Server.
 
-El presente proyecto surge de la necesidad de diseñar y desarrollar una base de datos relacional que permita optimizar los procesos de gestión de información en una **tienda de dispositivos electrónicos**, la cual maneja un alto volumen de productos, pedidos y clientes. En el entorno actual, dicha tienda realiza gran parte de su control de inventario y seguimiento de pedidos de forma manual o dispersa, generando inconsistencias, duplicidad de datos y demoras en la atención al cliente.
+Arquitectura modular basada en capas: Core, API, Infrastructure.
 
-Por tanto, se propone la construcción de un **sistema de gestión de base de datos en MySQL**, que garantice la integridad, consistencia y disponibilidad de la información, mediante un modelo bien normalizado y el uso de mecanismos de control como claves foráneas, procedimientos almacenados, vistas e índices. Este proyecto busca no solo resolver una problemática operativa, sino también demostrar la aplicación de principios de modelado, normalización y administración de datos empresariales.
+Cumplimiento de estándares de seguridad y control de acceso.
 
----
+Pruebas con herramientas profesionales: Postman, SoapUI y MQ Explorer.
 
-## **2. Objetivos del Proyecto**
+🧱 Arquitectura General
 
-### **Objetivo General**
-Diseñar e implementar un sistema de gestión de base de datos relacional en MySQL para una tienda de dispositivos electrónicos, que permita centralizar y optimizar la administración de información relacionada con productos, clientes, pedidos, reseñas y transacciones comerciales.
+Representación conceptual de la arquitectura de integración:
 
-### **Objetivos Específicos**
+[Cliente o Sistema Externo] --> [API REST] --> [Servicio de Integración] --> [MQ / DB / Sistema Interno]
 
-1. Analizar los requerimientos funcionales y estructurales del sistema de gestión de datos para la tienda.  
-2. Diseñar un modelo entidad–relación con al menos 30 entidades normalizadas, garantizando la integridad referencial.  
-3. Implementar la base de datos en **MySQL Workbench**, aplicando buenas prácticas de definición de claves, restricciones e índices.  
-4. Desarrollar consultas SQL, vistas y procedimientos almacenados que automaticen las principales operaciones del sistema.  
-5. Evaluar la eficiencia del modelo mediante pruebas de ejecución y optimización de consultas.  
-6. Presentar propuestas de mejora orientadas a la escalabilidad, seguridad y mantenimiento de la base de datos.  
+
+Capas funcionales:
+
+API Layer: interfaz de comunicación HTTP(S).
+
+Integration Core: lógica de negocio, transformación y enrutamiento de datos.
+
+Data Layer: persistencia en Oracle/SQL Server.
+
+⚙️ Requisitos Previos
+
+.NET SDK: versión 6.0 o superior
+
+Git Bash: versión actualizada
+
+IBM Integration Toolkit: 10.0.0.23
+
+Postman / SoapUI: para pruebas funcionales
+
+Oracle Database / SQL Server: conexión activa
+
+MQ Explorer: para gestión de colas
+
+🔧 Instalación y Configuración
+
+Clonar el repositorio desde GitHub:
+
+git clone https://github.com/johanncasallas/proyecto-integracion.git
+cd proyecto-integracion
+
+
+Configurar variables de entorno:
+
+DB_CONNECTION=Data Source=...;
+MQ_HOST=host.ejemplo.com
+MQ_PORT=1414
+
+
+Restaurar dependencias:
+
+dotnet restore
+
+
+Ejecutar el servicio localmente:
+
+dotnet run
+
+🧪 Ejecución de Pruebas
+
+Ejecutar pruebas unitarias:
+
+dotnet test
+
+
+Generar reporte de cobertura:
+
+dotnet test /p:CollectCoverage=true
+
+📂 Estructura del Proyecto
+/src
+  /Core
+  /API
+  /Infrastructure
+/tests
+  /UnitTests
+/docs
+README.md
+
+📦 Despliegue
+
+Construir el proyecto:
+
+dotnet publish -c Release -o out
+
+
+Desplegar en el entorno de integración (servidor o contenedor Docker).
+
+🔒 Seguridad
+
+Uso de autenticación con tokens JWT.
+
+Cifrado de credenciales y datos sensibles.
+
+Validación de entrada y sanitización de parámetros.
+
+Control de acceso basado en roles (RBAC).
+
+📘 Ejemplo de Endpoint
+Endpoint: POST /api/transactions/sync
+
+Descripción:
+Sincroniza una transacción entre sistemas internos y externos.
+
+Request:
+
+{
+  "transactionId": "TX123456",
+  "amount": 250000,
+  "currency": "COP",
+  "sourceSystem": "CoreBanking"
+}
+
+
+Response:
+
+{
+  "status": "SUCCESS",
+  "message": "Transacción sincronizada correctamente"
+}
+
+👥 Autor
+
+Johann Casallas
+Estudiante de Ingeniería de Sistemas - CUN
+Desarrollador de Integración en Banco Popular
+📧 casallasbecerrajohann@gmail.com
+
+🧾 Licencia
+
+Proyecto desarrollado con fines académicos y demostrativos.
+Todos los derechos reservados © 2025 Johann Casallas.
